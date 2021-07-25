@@ -9,9 +9,9 @@ func _ready() -> void:
 	add_to_group("Creeps")
 	
 	randomize()
-	translate(Vector3(0,0,rand_range(-10, 0)))
+	translate(Vector3(0,0,rand_range(-3, 0)))
 	rotate_z(rand_range(-45/rad, 45/rad))
-	velocity = rand_range(0.5, 1.5) * (Vector3.LEFT if randf() < 0.5 else Vector3.RIGHT)
+	velocity = (rand_range(1, 2) * (randi() & 2) - 1) * (Vector3.LEFT)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
