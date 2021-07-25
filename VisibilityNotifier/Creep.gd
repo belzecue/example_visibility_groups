@@ -1,7 +1,6 @@
 class_name Creep extends MeshInstance
 
 const rad: float = 57.2958
-var speed: float
 var velocity: Vector3
 
 
@@ -12,13 +11,12 @@ func _ready() -> void:
 	randomize()
 	translate(Vector3(0,0,rand_range(-10, 0)))
 	rotate_z(rand_range(-45/rad, 45/rad))
-	speed = rand_range(0.2, 1.5)
-	velocity = Vector3.LEFT if randf() < 0.5 else Vector3.RIGHT
+	velocity = rand_range(0.5, 1.5) * (Vector3.LEFT if randf() < 0.5 else Vector3.RIGHT)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	translate(velocity * delta * speed)
+	translate(velocity * delta)
 
 
 func _on_VisibilityNotifier_screen_exited() -> void:
